@@ -1,0 +1,22 @@
+We first tested adding twenty nodes with 5 noisemakers, and setting all dwell
+and other wait times to 100 ms and dwell/block probabilities to 50. In this test,
+concurrency occurred; networks were formed when nearby nodes had the same channel,
+and were not interrupted. At times nodes reported that noisemakers were interfering
+with them. Nodes frequently tried to connect themselves and changed channels. At
+many points in time, shields on nodes were raised, which proves that the threads
+can run concurrently to each other locally. When we reduced any of the probabilities
+to zero, i.e. talk_probability, the features they were related to ceased to function.
+For example, setting talk_probability to 0 led the program to do absolutely nothing other
+than generate and throw away messages. When dwell_probability was set to zero,
+the nodes never changed their channel. Furthermore, as dwell probability grew
+closer to 100, less messages were sent because the nodes spent more of their time
+switching channels. As block probability approached 100, more and more of the nodes
+were blocked by the noisemakers. When 100 random nodes with 100 random noisemakers
+were added, barely any messages were sent because barely any nodes were close enough
+to each other. 1500 nodes and 500 noisemakers were then added randomly, which
+not only generated 1500 new files but also fostered many more potential networks.
+As talk and transmission times were decreased, less potential concurrency areas
+arose, because the thread scheduler could more easily connect and disconnect networks
+in series without blocking during a network's transmission. As those times went up,
+nodes more slowly creased and disbanded their networks, but concurrency scenarios
+becanme more common. 
